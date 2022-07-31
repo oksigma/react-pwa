@@ -5,6 +5,7 @@ import StatCard from './StatCard';
 import CheckInCard from './components/CheckInCard';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
+import UsersCheckinScreen from './screens/UsersCheckInScreen';
 
 const people = [
   {
@@ -17,6 +18,14 @@ const people = [
   },
   {
     name : "Erin Smith",
+    checkIn : false
+  },
+  {
+    name : "Diana Windsor",
+    checkIn : false
+  },
+  {
+    name : "Diana Windsor",
     checkIn : false
   },
   {
@@ -45,11 +54,7 @@ function App() {
         
       /> */}
       <div className = "m-5">
-        {people.map((person) => {
-         return (  <CheckInCard person={person}></CheckInCard>  )        
-        })
-      }
-
+        <UsersCheckinScreen people={people}></UsersCheckinScreen>   
       </div>
 
     </div>

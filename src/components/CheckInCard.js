@@ -1,11 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
+import produce from 'immer'
 
 function CheckInCard( {person} ) {
+  console.log('person', person)
     const [checkInStatus, setCheckInStatus ] = useState(person.checkIn)
 
     const onClick = () => {
-        setCheckInStatus(!checkInStatus)
+      let status = produce(checkInStatus, draft => {
+        draft = !checkInStatus
+      })
+        setCheckInStatus(status)
     }
 
   return (
@@ -19,8 +24,8 @@ function CheckInCard( {person} ) {
     <div class="flex pt-2 justify-between">
       <p class="">{person.name}</p>
       {checkInStatus ? 
-      <div class="border-1 h-6 w-6 rounded-full border-white bg-green-500 ml-5"></div> : 
-      <div class="border-1 h-6 w-6 rounded-full border-white bg-red-500 ml-5"></div>}
+      <div class="border-1 h-6 w-6 rounded-full border-white bg-green-500 ml-5"></div> 
+      : <div class="border-1 h-6 w-6 rounded-full border-white bg-red-500 ml-5"></div>}
     </div>
   </div>
   )
