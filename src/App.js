@@ -19,19 +19,19 @@ const people = [
   {
     name : "Erin Smith",
     checkIn : false
-  },
-  {
-    name : "Diana Windsor",
-    checkIn : false
-  },
-  {
-    name : "Diana Windsor",
-    checkIn : false
-  },
-  {
-    name : "Diana Windsor",
-    checkIn : false
   }
+  // {
+  //   name : "Diana Windsor",
+  //   checkIn : false
+  // },
+  // {
+  //   name : "Diana Windsor",
+  //   checkIn : false
+  // },
+  // {
+  //   name : "Diana Windsor",
+  //   checkIn : false
+  // }
 ]
 
 function App() {

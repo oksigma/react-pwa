@@ -1,28 +1,34 @@
 import React from 'react'
 import CheckInCard from '../components/CheckInCard'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import produce from "immer";
 
 function UsersCheckInScreen({people}) {
   const [peopleStatus, setPeople] = useState(people)
 
   const checkInAll = () => {
-    console.log('peopleStatus:', peopleStatus)
+    console.log('peopleStatusStart:', peopleStatus)
 
     let ppl = produce(
       peopleStatus, 
       (draft) => {
         //let res = draft;
         console.log('draft: ',draft)
-        draft = peopleStatus.map((person, idx) => {
+        let new_val = draft.map((person, idx) => {
           console.log('person: ',person)
-          console.log('personCheckin: ',person.checkIn)
-          console.log('person new Checkin: ',!person.checkIn)
-          console.log('idx: ',idx)
-          return draft[idx].checkIn = !person.checkIn
-        });
+          // console.log('personCheckin: ',person.checkIn)
+          // console.log('person new Checkin: ',!person.checkIn)
+          // console.log('idx: ',idx)
+          //draft[idx].checkIn = !person.checkIn
+          return {
+            name : person.name,
+            checkIn : !person.checkIn
+          }});
         //console.log('draft',draft);
-    
+        //const new_val = draft
+        return new_val
+
+
         //res
         //return draft;
         // setTimeout(() => {
@@ -30,7 +36,7 @@ function UsersCheckInScreen({people}) {
 
       })
       setPeople(ppl)
-      console.log('peopleStatus',peopleStatus)
+      console.log('peopleStatusEnd',peopleStatus)
 
   }
 
@@ -45,7 +51,7 @@ function UsersCheckInScreen({people}) {
             {peopleStatus.map((person) => {
               return (  <CheckInCard person={person}></CheckInCard>  )        
             })
-    }
+        } 
     </div>
   )
 }

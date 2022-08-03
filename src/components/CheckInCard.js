@@ -5,12 +5,17 @@ import produce from 'immer'
 function CheckInCard( {person} ) {
   console.log('person', person)
     const [checkInStatus, setCheckInStatus ] = useState(person.checkIn)
-
+    console.log('checkInStatus: ',checkInStatus)
     const onClick = () => {
       let status = produce(checkInStatus, draft => {
         draft = !checkInStatus
+        console.log('check btn: ', draft)
+        return draft
       })
+        console.log('status: ',status)
         setCheckInStatus(status)
+        console.log('status: ',status)
+        console.log('checkInStatus', checkInStatus)
     }
 
   return (
