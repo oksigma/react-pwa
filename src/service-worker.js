@@ -69,4 +69,25 @@ self.addEventListener('message', (event) => {
   }
 });
 
+const CACHE_NAME = "react-pwa"
+const urlsToCache = [
+  // '/',
+  // '/static/css/main.e95fda03.css',
+  // '/js/main.4a0a12e1.js'
+  '/favicon.ico',
+  '/manifest.json',
+  '/logo192.png'
+
+]
+
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        // Open a cache and cache our files
+        return cache.addAll(urlsToCache);
+      })
+  );
+});
+
 // Any other custom service worker logic can go here.
