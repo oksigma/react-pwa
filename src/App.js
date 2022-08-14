@@ -6,6 +6,7 @@ import CheckInCard from './components/CheckInCard';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import UsersCheckinScreen from './screens/UsersCheckInScreen';
+import { QrReader } from 'react-qr-reader';
 
 const people = [
   {
@@ -49,10 +50,27 @@ function App() {
 
       
       {/* <input accept = "image/*" id="icon-button-file" capture="environment" /> */}
-      {/* <Camera
+      <div className = "m-5"> 
+      <QrReader
+        onResult={(result, error) => {
+         if (!!result) {
+           console.log('QR Code found')
+           console.log(result?.text)
+         }
+
+         if (!!error) {
+           console.log('error');
+         }
+        }}
+        style={{ width: '80%' }}
+      />
+      </div>
+
+      {/* <div className = "m-5"> 
+      <Camera
         onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
-        
-      /> */}
+      />
+      </div> */}
       <div className = "m-5">
         <UsersCheckinScreen people={people}></UsersCheckinScreen>   
       </div>
