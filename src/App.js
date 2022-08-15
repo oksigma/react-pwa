@@ -55,8 +55,9 @@ function App() {
         constraints = { {facingMode : 'environment'} }
         onResult={(result, error) => {
          if (!!result) {
-           console.log('QR Code found')
-           console.log(result?.text)
+           //console.log('QR Code found')
+           //console.log(result?.text)
+           
          }
 
          if (!!error) {
