@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <h2>Welcome to Site Gate QR</h2>
+      <h2>Site Gate QR</h2>
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
       </header>
 
