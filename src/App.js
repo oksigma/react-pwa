@@ -7,6 +7,7 @@ import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import UsersCheckinScreen from './screens/UsersCheckInScreen';
 import { QrReader } from 'react-qr-reader';
+import { useState } from 'react';
 
 const people = [
   {
@@ -36,6 +37,9 @@ const people = [
 ]
 
 function App() {
+
+  const [qrCode, setQrCode] = useState('No Code')
+
   function handleTakePhoto (dataUri) {
     // Do stuff with the photo...
     console.log('takePhoto');
@@ -50,14 +54,18 @@ function App() {
 
       
       {/* <input accept = "image/*" id="icon-button-file" capture="environment" /> */}
+      <div className="m-5">
+        <p>QR Code: {qrCode}</p>
+      </div>
       <div className = "m-5"> 
       <QrReader
         constraints = { {facingMode : 'environment'} }
         onResult={(result, error) => {
          if (!!result) {
            //console.log('QR Code found')
+           setQrCode(result?.text)
            //console.log(result?.text)
-           
+
          }
 
          if (!!error) {
