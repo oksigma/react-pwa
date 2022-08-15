@@ -52,6 +52,7 @@ function App() {
       {/* <input accept = "image/*" id="icon-button-file" capture="environment" /> */}
       <div className = "m-5"> 
       <QrReader
+        constraints = { {facingMode : 'environment'} }
         onResult={(result, error) => {
          if (!!result) {
            console.log('QR Code found')
